@@ -1,4 +1,12 @@
-document.addEventListener("DOMContentLoaded", () => {
+function checkDOMReady() {
+    if (document.readyState === "loading") {
+        setTimeout(checkDOMReady, 100);
+    } else {
+        initialiseMenu();
+    }
+}
+
+function initialiseMenu() {
     const menuButton = document.getElementById("app-menu-button");
     const menuGrid = document.getElementById("app-menu-grid");
 
@@ -16,4 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     });
-});
+}
+
+checkDOMReady();
